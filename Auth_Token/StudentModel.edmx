@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Student_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Datafile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Filerecord" Type="image" Nullable="false" />
+          <Property Name="Filetype" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Intern_DB.dbo.Datafile_Sundram' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Datafile_Sundram">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="ContentType" />
+            <PropertyRef Name="Data" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Data" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student_Details_Sundram">
+          <Key>
+            <PropertyRef Name="Student_ID" />
+          </Key>
+          <Property Name="Student_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_Roll_Number" Type="int" Nullable="false" />
+          <Property Name="Student_FirstName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Student_LastName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Student_UniversityName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Student_MailId" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Student_Preffered_ProgrammingLanguage" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Student_DBModelStoreContainer">
+          <EntitySet Name="Datafile" EntityType="Self.Datafile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student_Details_Sundram" EntityType="Self.Student_Details_Sundram" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Datafile_Sundram" EntityType="Self.Datafile_Sundram" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Datafile_Sundram].[id] AS [id], 
+    [Datafile_Sundram].[Name] AS [Name], 
+    [Datafile_Sundram].[ContentType] AS [ContentType], 
+    [Datafile_Sundram].[Data] AS [Data]
+    FROM [dbo].[Datafile_Sundram] AS [Datafile_Sundram]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Student_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Datafile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Filerecord" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Filetype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student_Details_Sundram">
+          <Key>
+            <PropertyRef Name="Student_ID" />
+          </Key>
+          <Property Name="Student_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_Roll_Number" Type="Int32" Nullable="false" />
+          <Property Name="Student_FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_UniversityName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_MailId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student_Preffered_ProgrammingLanguage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Datafile_Sundram">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="ContentType" />
+            <PropertyRef Name="Data" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContentType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Student_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Datafiles" EntityType="Self.Datafile" />
+          <EntitySet Name="Student_Details_Sundram" EntityType="Self.Student_Details_Sundram" />
+          <EntitySet Name="Datafile_Sundram" EntityType="Self.Datafile_Sundram" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Student_DBModelStoreContainer" CdmEntityContainer="Student_DBEntities">
+          <EntitySetMapping Name="Datafiles">
+            <EntityTypeMapping TypeName="Student_DBModel.Datafile">
+              <MappingFragment StoreEntitySet="Datafile">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Filerecord" ColumnName="Filerecord" />
+                <ScalarProperty Name="Filetype" ColumnName="Filetype" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student_Details_Sundram">
+            <EntityTypeMapping TypeName="Student_DBModel.Student_Details_Sundram">
+              <MappingFragment StoreEntitySet="Student_Details_Sundram">
+                <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+                <ScalarProperty Name="Student_Roll_Number" ColumnName="Student_Roll_Number" />
+                <ScalarProperty Name="Student_FirstName" ColumnName="Student_FirstName" />
+                <ScalarProperty Name="Student_LastName" ColumnName="Student_LastName" />
+                <ScalarProperty Name="Student_UniversityName" ColumnName="Student_UniversityName" />
+                <ScalarProperty Name="Student_MailId" ColumnName="Student_MailId" />
+                <ScalarProperty Name="Student_Preffered_ProgrammingLanguage" ColumnName="Student_Preffered_ProgrammingLanguage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Datafile_Sundram">
+            <EntityTypeMapping TypeName="Student_DBModel.Datafile_Sundram">
+              <MappingFragment StoreEntitySet="Datafile_Sundram">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

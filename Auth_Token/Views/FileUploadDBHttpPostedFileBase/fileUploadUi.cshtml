@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "fileUploadUi";
+    Layout = "~/Views/Shared/_UploadFileHttpPostedFile.cshtml";
+}
+<link href="~/Content/UploadHttpPostedFileBase.css" rel="stylesheet" />
+<h2>Upload</h2>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div id="text1">
+        @using (Html.BeginForm("FileUpload", "FileUploadDBHttpPostedFileBase", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <input type="file" name="fileBase" />
+            <br />
+
+            <input type="submit" id="btn1" class="btn btn-default" value="Upload" />
+        }
+        <br /><br />
+        @Html.ActionLink("Download", "DownloadFile")
+
+    </div>
+</body>
+</html>

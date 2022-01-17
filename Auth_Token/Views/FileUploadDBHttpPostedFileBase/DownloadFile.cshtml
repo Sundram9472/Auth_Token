@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "DownloadImage";
+    Layout = "~/Views/Shared/_UploadFileHttpPostedFile.cshtml";
+}
+<link href="~/Content/UploadHttpPostedFileBase.css" rel="stylesheet" />
+<h2>Download-Image</h2>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div id="text1">
+        @{ int counter = 0;}
+        @foreach (string fileName in ViewBag.ImagesName)
+        {
+
+            String fileID = ViewBag.ImagesID[counter];
+            <ul>
+                <li><h4>@Html.ActionLink(fileName, "DownloadIndingFile/", new { id = fileID })</h4></li>
+            </ul>
+            counter++;
+        }
+
+    </div>
+    <br /><br />
+    @Html.ActionLink("Go To Home", "Index", "FileUploadDBHttpPostedFileBase")
+</body>
+</html>
+

@@ -1,0 +1,7 @@
+﻿bobody {
+    background-color: aqua;
+    background-image: url('../../Content/Images/pic4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}

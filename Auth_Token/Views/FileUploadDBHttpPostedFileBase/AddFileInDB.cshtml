@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "AddFileInDB";
+    Layout = "~/Views/Shared/_UploadFileHttpPostedFile.cshtml";
+}
+}
+
+<h2>Upload-Files</h2>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("AddFileInDB", "FileUploadDBHttpPostedFileBase", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <input type="file" name="UploadFile" />
+            <br />
+
+            <input type="submit" id="btn1" class="btn btn-default" value="Upload" />
+        }
+        <br /><br />
+        @Html.ActionLink("Download-File", "DownloadImage")
+
+    </div>
+</body>
+</html>

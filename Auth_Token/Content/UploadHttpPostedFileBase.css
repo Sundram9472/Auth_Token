@@ -1,0 +1,12 @@
+﻿body {
+    background-color: aqua;
+    background-image: url('../../Content/Images/pic3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+#text1 {
+    color: #fff;
+    background: rgba(0,0,0,0.7);
+    padding: 6px 11px;
+}
